@@ -15,3 +15,6 @@ pip install dash
 pip install plotly
 pip install yfinance
 ```
+
+# Live App
+Live App bisa di akses di https://tradingplan.herokuapp.com/

@@ -47,15 +47,12 @@ app.layout = html.Div([
             html.Br(),
             html.Br(),
             html.Div(id='output-table')
-
         ], className='six columns'),
 
         html.Div([
             html.Div(id='output'),
             html.Div(id='output2')
-
         ], className='six columns'),
-
     ], className='row'),
 ], className='ten columns offset-by-one')
 
@@ -120,13 +117,7 @@ def update2(emiten):
                       figure=fig,
                       config={'displayModeBar': False}
                       ),
-
-
-
-
-
         ])
-
 
 @app.callback(
     Output('output', 'children'),
@@ -179,10 +170,10 @@ def update(modal, risk, rrr, SL):
     ]
 )
 def update_table(harga_beli, emiten, risk, rrr, SL):
-    jumlah_lot = (risk / (SL / 100)) / int(harga_beli) / 100
+    jumlah_lot = (risk // (SL / 100)) // harga_beli / 100
     nominal = round(jumlah_lot) * int(harga_beli) * 100
-    stop_loss = round(float(harga_beli) * (1 - SL / 100))
-    taking_profit = float(harga_beli) * (1 + (SL * rrr) / 100)
+    stop_loss = round(int(harga_beli) * (1 - SL / 100))
+    taking_profit = int(harga_beli) * (1 + (SL * rrr) / 100)
 
     return html.Div([
             html.Tr([
